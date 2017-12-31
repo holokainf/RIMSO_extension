@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+
+        <record id="sql_request_tree-view" model="ir.ui.view">
+            <field name="name">sql.request.tree</field>
+            <field name="model">sql.request</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Incident">
+                    <field name="name"  />
+                    <field name="sql" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="sql_request-view" model="ir.ui.view">
+            <field name="name">sql.request.form</field>
+            <field name="model">sql.request</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Requête SQL" version="7.O">
+                    <group colspan="4">
+                        <group col="2">
+                             <field  name="name" />
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Requête SQL">
+                            <field name="sql"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="sql_request_action" model="ir.actions.act_window">
+            <field name="name">sql.request.action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sql.request</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="sql_requests_report_menu" name="Rapports SQL" parent="base.menu_custom"  sequence="1"/>
+        <menuitem id="sql_request_menu" name="Requêtes SQL" parent="sql_requests_report_menu" action="sql_request_action" />
+
+    </data>
+</openerp>
